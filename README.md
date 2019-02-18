@@ -1,10 +1,10 @@
-# Smart System - *Groepnaam*
+# Smart System - *Smart Locker*
 
 **Teammembers**
-* Persoon 1
-* Persoon 2
-* Persoon 3
-* Persoon 4
+* Jarno Cools
+* Oussama Es-Salhi
+* Imad El-Azzouzi 
+* Afaq Mughal
 
 ## Summary
 *Korte beschrijving van het project*
