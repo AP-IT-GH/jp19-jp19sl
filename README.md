@@ -8,3 +8,4 @@
 
 ## Summary
 *Korte beschrijving van het project*
+Smart Locker voor het uitlenen van materiaal.
