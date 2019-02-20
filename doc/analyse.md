@@ -18,6 +18,12 @@ vergrendelen. Mensen zouden via een applicatie makkelijk hun studentenkaart aan 
 maandelijkse of jaarlijkse kost kunnen invoeren, en deze laten betalen via Google pay en Apple pay om de lockers te kunnen laten gebruiken. Alleen de 
 administrator zou van op afstand de lockers moeten kunnen openen. Administrator zou ook de logs moeten kunnen openen op een web application.
 
+Een van de mogelijkheden zou ook zijn, dat door een gebruiker met meer rechten enkele niet verhuurde/gereserveerde lockers kan reserveren hier materiaal in 
+steken. Dit materiaal met de locker koppelen en gebruikers in een groep of apart toegang geven tot de locker binnen bepaalde uren. Mogelijkheid voor een 
+gebruiker met meer rechten om toe te lichten wat in welke locker ligt.
+
+Het identificeren van een locker zou aan de hand van een led zijn. Deze blinkt in een bepaald ritme als deze ontgrendeld is.
+
 ## Probleemstelling
 
 Eenvoudig uitlenen van materiaal, het voorkomen van diefstal of kwijtraken van materiaal.
