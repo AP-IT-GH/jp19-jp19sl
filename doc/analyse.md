@@ -44,7 +44,7 @@ Het identificeren van een locker zou aan de hand van een led zijn. Deze blinkt i
 Plaats hier een high level blokdiagram van de hardware. Hierin moet duidelijk worden weergegeven wat de verschillende delen zijn en hoe deze met elkaar verbonden zijn. Geef ook een woordje uitleg bij het schema
 
 ## Software analyse
-
+![State Diagram](img/state_diagram_raspberry_pi.png)
 Plaats hier een flow-chart van de software. Hierin moet de werking van de software duidelijk worden weergegeven. Voorzie ook de nodige uitleg.
 
 ## User stories en Engineering Tasks
