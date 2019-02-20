@@ -4,7 +4,7 @@
 
 Maak een mindmap met alle functionaliteit die je wilt voorzien in je project.
 Dit zal je startpunt zijn voor een verdere analyse.
-[Mindmap](img/mindmap.png)
+![Mindmap](img/mindmap.png)
 
 ## Beschrijving
 
