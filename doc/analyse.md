@@ -1,5 +1,19 @@
 # Analyse
 
+## Probleemstelling
+
+Eenvoudig uitlenen van materiaal, het voorkomen van diefstal of kwijtraken van materiaal.
+
+- Materiaal achterlaten op locatie zonder monitoring
+- Materiaal uitwisselen via een locker met een gedeelde key
+- Bijhouden van access logs
+- Ervoor zorgen dat alleen leerlingen met juiste studentenkaart toegang hebben
+- Koppelen van speciefiek materiaal (bv elektronica doos) met een bepaalde locker
+- Backup manier om te identificeren voor wanneer de user geen studentenkaart bij de hand heeft
+- Mechanische manier om locker te openen als elektronica niet wilt werken
+- Gebruiker moet materiaal kunnen reserveren
+- Bestalingssysteem voorzien
+
 ## Mindmap
 
 ![Mindmap](img/mindmap.png)
@@ -23,20 +37,6 @@ steken. Dit materiaal met de locker koppelen en gebruikers in een groep of apart
 gebruiker met meer rechten om toe te lichten wat in welke locker ligt.
 
 Het identificeren van een locker zou aan de hand van een led zijn. Deze blinkt in een bepaald ritme als deze ontgrendeld is.
-
-## Probleemstelling
-
-Eenvoudig uitlenen van materiaal, het voorkomen van diefstal of kwijtraken van materiaal.
-
-- Materiaal achterlaten op locatie zonder monitoring
-- Materiaal uitwisselen via een locker met een gedeelde key
-- Bijhouden van access logs
-- Ervoor zorgen dat alleen leerlingen met juiste studentenkaart toegang hebben
-- Koppelen van speciefiek materiaal (bv elektronica doos) met een bepaalde locker
-- Backup manier om te identificeren voor wanneer de user geen studentenkaart bij de hand heeft
-- Mechanische manier om locker te openen als elektronica niet wilt werken
-- Gebruiker moet materiaal kunnen reserveren
-- Bestalingssysteem voorzien
 
 ## Hardware analyse
 ![Hardware Analyse](img/hardware_analyse.png)
