@@ -33,7 +33,7 @@ Eenvoudig uitlenen van materiaal, het voorkomen van diefstal of kwijtraken van m
 - Bestalingssysteem voorzien
 
 ## Hardware analyse
-
+![Hardware Analyse](img/hardware_analyse.png)
 Plaats hier een high level blokdiagram van de hardware. Hierin moet duidelijk worden weergegeven wat de verschillende delen zijn en hoe deze met elkaar verbonden zijn. Geef ook een woordje uitleg bij het schema
 
 ## Software analyse
