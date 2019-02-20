@@ -2,8 +2,6 @@
 
 ## Mindmap
 
-Maak een mindmap met alle functionaliteit die je wilt voorzien in je project.
-Dit zal je startpunt zijn voor een verdere analyse.
 ![Mindmap](img/mindmap.png)
 
 ## Beschrijving
@@ -12,6 +10,12 @@ Zet hier de beschrijving van je project. Licht de functionaliteit van het
 project toe.
 
 Minimaal 3000 tekens.
+
+Een kast lockers met een centrale unit Raspberry PI. De lockers zullen ontgrendeld kunnen worden via een interface en studentenkaart. Deze interface zou een 
+touchscreen, webapplication of een mobile application kunnen zijn. Via een webapplication kunnen nakijken wie welke locker huurt, welke lockers gereserveerd 
+of in gebruik zijn. Het monitoren van de locker gebeurt door een sensor. Hierdoor kunnen mensen een melding krijgen als ze vergeten zijn hun locker te 
+vergrendelen. Mensen zouden via een applicatie makkelijk hun studentenkaart aan hun gebruikersaccount kunnen koppelen. Bij een gebruikersaccount zouden we een 
+maandelijkse of jaarlijkse kost kunnen invoeren, en deze laten betalen via Google pay en Apple pay om de lockers te kunnen laten gebruiken.
 
 ## Probleemstelling
 
