@@ -23,8 +23,6 @@ Eenvoudig uitlenen van materiaal, het voorkomen van diefstal of kwijtraken van m
 Zet hier de beschrijving van je project. Licht de functionaliteit van het
 project toe.
 
-Minimaal 3000 tekens.
-
 Een kast lockers met als centrale unit de Raspberry PI. De lockers zullen ontgrendeld kunnen worden via een interface en studentenkaart. Deze interface zou een 
 touchscreen, web application of een mobile application kunnen zijn. Via een web application kan de administrator nakijken wie welke locker huurt, welke lockers gereserveerd of in gebruik zijn.
 
@@ -40,6 +38,14 @@ Het identificeren van een locker zou aan de hand van een led zijn. Deze blinkt i
 Plaats hier een high level blokdiagram van de hardware. Hierin moet duidelijk worden weergegeven wat de verschillende delen zijn en hoe deze met elkaar verbonden zijn. Geef ook een woordje uitleg bij het schema
 
 ## Software analyse
+
+| Blok          | Data In       | Data Uit|
+| ------------- | ------------- | ----- |
+| Raspberry Pi  | API calls   | Digital Out |
+| Web Server    | nvt.      |   API calls |
+| Solenoid lock | 12 V      |    nvt. |
+| Reed Sensor   | nvt.      |    Digital HIGH/LOW |
+
 ![State Diagram](img/state_diagram_raspberry_pi.png)
 Plaats hier een flow-chart van de software. Hierin moet de werking van de software duidelijk worden weergegeven. Voorzie ook de nodige uitleg.
 
