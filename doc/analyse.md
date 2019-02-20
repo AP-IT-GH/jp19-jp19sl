@@ -12,6 +12,20 @@ project toe.
 
 Minimaal 3000 tekens.
 
+## Probleemstelling
+
+Eenvoudig uitlenen van materiaal, het voorkomen van diefstal of kwijtraken van materiaal.
+
+- Materiaal achterlaten op locatie zonder monitoring
+- Materiaal uitwisselen via een locker met een gedeelde key
+- Bijhouden van access logs
+- Ervoor zorgen dat alleen leerlingen met juiste studentenkaart toegang hebben
+- Koppelen van speciefiek materiaal (bv elektronica doos) met een bepaalde locker
+- Backup manier om te identificeren voor wanneer de user geen studentenkaart bij de hand heeft
+- Mechanische manier om locker te openen als elektronica niet wilt werken
+- Gebruiker moet materiaal kunnen reserveren
+- Bestalingssysteem voorzien
+
 ## Hardware analyse
 
 Plaats hier een high level blokdiagram van de hardware. Hierin moet duidelijk worden weergegeven wat de verschillende delen zijn en hoe deze met elkaar verbonden zijn. Geef ook een woordje uitleg bij het schema
