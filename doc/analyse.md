@@ -35,7 +35,7 @@ We hebben gekozen om al bestaande lockers te nemen en hier ons systeem in te ins
 ![Locker kast](img/lockerkast.jpg)
 
 ## Hardware analyse
-![Hardware Analyse](img/Hardware_Diagram_finaal.jpg)
+![Hardware Analyse](img/hardware_scheme.png)
 Locker kan ontgrendeld worden via studenten kaart en smartphone. Het kiezen welke locker je wilt openen gebeurd via touchsreen. Dit wordt bediend door 1 Raspberry PI die in verbinding is met een andere Raspberry PI die de reed contacten leest en de solenoid locks ontgrendeld.
 
 ### Specificatietabel
@@ -51,6 +51,18 @@ Locker kan ontgrendeld worden via studenten kaart en smartphone. Het kiezen welk
 |                 |Card reading distance|0 mm| 60 mm|
 |Raspberry PI 3B+ |Spanning       |5V       |5.1V |
 |                 |Stroom         |1.25 A   |3 A  |
+
+### Argumentatie tabel
+| Blok          | Argumentatie       | Alternatieven          |
+| ------------- | ------------- | -----             |
+| De raspberry PI 3B+  | De raspberry PI 3B+ beschikt al over een Wi-Fi verbinding. Deze heeft ook GPIO pinnen voor het aansluiten van de RFID reader en de touchscreen.     | NanoPi Neo 4      |
+| Netvoeding    | Locker aansluiten met netvoeding en als backup met ups. Alle lockers bedraden.         |          |
+|RFID Reader | RFID wordt meer gebruikt voor het opslaan van materialen.          | NFC              |
+| Touchscreen   | Gebruiksgemak, visualisatie           |Keypad  |
+| Elektronisch slot| Solenoid, veiliger omdat zelfs als de stroom uitvalt de locker deur nog steeds vergrendeld blijft waardoor alles wat erin zit veilig geborgen blijft, terwijl bij een magnetisch slot bij stroomuitval de locker deur open komt te staan| magnetisch slot|
+|Reed sensor| De MK04 omdat deze bijna onzichtbaar is voor het oog. De werkspanning zijn veilig, hier komen we nooit van in de buurt.| 59140 RS|
+|RGB Led| Makkelijk om iets te visualiseren | Speaker, LCD|
+
 ## Software analyse
 ### Data In -en Outputs
 
