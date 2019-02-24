@@ -20,9 +20,6 @@ Eenvoudig uitlenen van materiaal, het voorkomen van diefstal of kwijtraken van m
 
 ## Beschrijving
 
-Zet hier de beschrijving van je project. Licht de functionaliteit van het
-project toe.
-
 Een kast lockers met als centrale unit de Raspberry PI. De lockers zullen ontgrendeld kunnen worden via een interface en studentenkaart. Deze interface zou een 
 touchscreen, web application of een mobile application kunnen zijn. Via een web application kan de administrator nakijken wie welke locker huurt, welke lockers gereserveerd of in gebruik zijn.
 
@@ -32,6 +29,8 @@ maandelijkse of jaarlijkse kost kunnen invoeren, en deze laten betalen via o.a. 
 Via het web dashboard waar enkel de administrator toegeng tot heeft kan een bepaalde locker geopend worden en kan men ook de access logs bekijken. 
 
 Het identificeren van een locker zou aan de hand van een led zijn. Deze blinkt in een bepaald ritme als deze ontgrendeld is.
+
+
 
 ## Hardware analyse
 ![Hardware Analyse](img/hardware_scheme.png)
