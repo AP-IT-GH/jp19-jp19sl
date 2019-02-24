@@ -51,11 +51,11 @@ Plaats hier een high level blokdiagram van de hardware. Hierin moet duidelijk wo
 Plaats hier een flow-chart van de software. Hierin moet de werking van de software duidelijk worden weergegeven. Voorzie ook de nodige uitleg.
 
 ### Flowchart
-![Main flowchart](img/flowcharts/main_flowchart)
+![Main flowchart](img/flowcharts/main_flowchart.png)
 
-![Idle flowchart](img/flowcharts/idle_flowchart)
+![Idle flowchart](img/flowcharts/idle_flowchart.png)
 
-![Select locker flowchart](img/flowcharts/select_locker_flowchart)
+![Select locker flowchart](img/flowcharts/select_locker_flowchart.png)
 ## User stories en Engineering Tasks
 
 Geef hier de userstories en engineering tasks. De beschrijving moet conform zijn met de methode zoals gezien in de lessen  van projectmanagement vn dhr Peeters.
