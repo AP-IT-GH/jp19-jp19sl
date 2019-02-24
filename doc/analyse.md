@@ -30,21 +30,36 @@ Via het web dashboard waar enkel de administrator toegeng tot heeft kan een bepa
 
 Het identificeren van een locker zou aan de hand van een led zijn. Deze blinkt in een bepaald ritme als deze ontgrendeld is.
 
+We hebben gekozen om al bestaande lockers te nemen en hier ons systeem in te installeren. De middelste locker als centrale unit te gebruiken waar de Raspberry PI, touchscreen en voeding zou komen. In de overige lockers gaan we de reed contacten en solenoid locks installeren.
 
+![Locker kast](img/lockerkast.jpg)
 
 ## Hardware analyse
 ![Hardware Analyse](img/hardware_scheme.png)
 Locker kan ontgrendeld worden via studenten kaart en smartphone. Het kiezen welke locker je wilt openen gebeurd via touchsreen. Dit wordt bediend door 1 Raspberry PI die in verbinding is met een andere Raspberry PI die de reed contacten leest en de solenoid locks ontgrendeld.
 
+### Specificatietabel
+| Blok            | Specificatie  | Min     | Max |
+|-----------      |---------------|-----    |-----|
+|Elektronisch slot|Werkspanning   |9V       |12V  |
+|                 |Stroom         |500mA(9V)|650mA(12V)|
+|                 |Totale stroom(8 lockers)|4A|5.2A|
+|Reed sensor      |Switching spanning|      |200V |
+|                 |Stroom         |10mA     |1.25A|
+|RFID RC522       |Stroom         |13mA     |26mA |
+|                 |Spanning       |         |3.3V |
+|                 |Card reading distance|0 mm| 60 mm|
+|Raspberry PI 3B+ |Spanning       |5V       |5.1V |
+|                 |Stroom         |1.25 A   |3 A  |
 ## Software analyse
 ### Data In -en Outputs
 
-| Blok          | Data In       | Data Uit|
-| ------------- | ------------- | ----- |
-| Raspberry Pi  | API calls   | Digital Out |
-| Web Server    | nvt.      |   API calls |
-| Solenoid lock | 12 V      |    nvt. |
-| Reed Sensor   | nvt.      |    Digital HIGH/LOW |
+| Blok          | Data In       | Data Uit          |
+| ------------- | ------------- | -----             |
+| Raspberry Pi  | API calls     | Digital Out       |
+| Web Server    | nvt.          | API calls         |
+| Solenoid lock | 12 V          | nvt.              |
+| Reed Sensor   | nvt.          | Digital HIGH/LOW  |
 ### State diagram
 ![State Diagram](img/state_diagram_raspberry_pi.png)
 
@@ -62,9 +77,6 @@ Locker kan ontgrendeld worden via studenten kaart en smartphone. Het kiezen welk
 
 Geef hier de userstories en engineering tasks. De beschrijving moet conform zijn met de methode zoals gezien in de lessen  van projectmanagement vn dhr Peeters.
 
-## systeemspecificaties
+## Systeemspecificaties
 
 Geef hier de systeemspecificaties waaruit je de hardware en software kan ontwerpen
-
-
-
