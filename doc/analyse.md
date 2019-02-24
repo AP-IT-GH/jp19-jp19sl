@@ -34,7 +34,7 @@ Via het web dashboard waar enkel de administrator toegeng tot heeft kan een bepa
 Het identificeren van een locker zou aan de hand van een led zijn. Deze blinkt in een bepaald ritme als deze ontgrendeld is.
 
 ## Hardware analyse
-![Hardware Analyse](img/hardware_analyse.png)
+![Hardware Analyse](img/hardware_scheme.png)
 Plaats hier een high level blokdiagram van de hardware. Hierin moet duidelijk worden weergegeven wat de verschillende delen zijn en hoe deze met elkaar verbonden zijn. Geef ook een woordje uitleg bij het schema
 
 ## Software analyse
