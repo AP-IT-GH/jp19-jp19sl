@@ -35,7 +35,7 @@ We hebben gekozen om al bestaande lockers te nemen en hier ons systeem in te ins
 ![Locker kast](img/lockerkast.jpg)
 
 ## Hardware analyse
-![Hardware Analyse](img/hardware_scheme.png)
+![Hardware Analyse](img/Hardware_Diagram_finaal.jpg) 
 Locker kan ontgrendeld worden via studenten kaart en smartphone. Het kiezen welke locker je wilt openen gebeurd via touchsreen. Dit wordt bediend door 1 Raspberry PI die in verbinding is met een andere Raspberry PI die de reed contacten leest en de solenoid locks ontgrendeld.
 
 ### Specificatietabel
