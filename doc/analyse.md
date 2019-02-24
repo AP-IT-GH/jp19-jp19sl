@@ -35,7 +35,7 @@ Het identificeren van een locker zou aan de hand van een led zijn. Deze blinkt i
 
 ## Hardware analyse
 ![Hardware Analyse](img/hardware_scheme.png)
-Plaats hier een high level blokdiagram van de hardware. Hierin moet duidelijk worden weergegeven wat de verschillende delen zijn en hoe deze met elkaar verbonden zijn. Geef ook een woordje uitleg bij het schema
+Locker kan ontgrendeld worden via studenten kaart en smartphone. Het kiezen welke locker je wilt openen gebeurd via touchsreen. Dit wordt bediend door 1 Raspberry PI die in verbinding is met een andere Raspberry PI die de reed contacten leest en de solenoid locks ontgrendeld.
 
 ## Software analyse
 ### Data In -en Outputs
