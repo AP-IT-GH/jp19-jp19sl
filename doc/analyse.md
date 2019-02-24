@@ -61,7 +61,7 @@ Locker kan ontgrendeld worden via studenten kaart en smartphone. Het kiezen welk
 | Touchscreen   | Gebruiksgemak, visualisatie           |Keypad  |
 | Elektronisch slot| Solenoid, veiliger omdat zelfs als de stroom uitvalt de locker deur nog steeds vergrendeld blijft waardoor alles wat erin zit veilig geborgen blijft, terwijl bij een magnetisch slot bij stroomuitval de locker deur open komt te staan| magnetisch slot|
 |Reed sensor| De MK04 omdat deze bijna onzichtbaar is voor het oog. De werkspanning zijn veilig, hier komen we nooit van in de buurt.| 59140 RS|
-|RGB Led| Makkelijk om iets te visualiseren | Speaker, LCD|
+|RGB Led| Makkelijk om iets te visualiseren, laag energieverbruik | Speaker, LCD|
 
 ## Software analyse
 ### Data In -en Outputs
