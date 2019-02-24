@@ -16,7 +16,7 @@ Eenvoudig uitlenen van materiaal, het voorkomen van diefstal of kwijtraken van m
 
 ## Mindmap
 
-![Mindmap](img/mindmap.png)
+![Mindmap](img/mindmap_new.png)
 
 ## Beschrijving
 
