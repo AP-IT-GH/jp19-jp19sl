@@ -68,10 +68,27 @@ Locker kan ontgrendeld worden via studenten kaart en smartphone. Het kiezen welk
 
 | Blok          | Data In       | Data Uit          |
 | ------------- | ------------- | -----             |
-| Raspberry Pi  | API calls     | Digital Out       |
-| Web Server    | nvt.          | API calls         |
+| Raspberry Pi  | API calls*    | Digital Out       |
+| Web Server    | API calls*    | API calls*        |
 | Solenoid lock | 12 V          | nvt.              |
 | Reed Sensor   | nvt.          | Digital HIGH/LOW  |
+
+#### API Calls* 
+  * RPI
+    - GET : opvragen van locker status, open of gesloten (webserver request).
+    - POST: Het openen van een locker.
+  * Web Server:
+    - GET : opvragen van:
+       - locker status, open of gesloten
+       - User profile data
+       - Acess Logs
+    - POST: 
+       - Het openen van een locker
+       - Aanmaken van user
+       - Nieuwe reservatie
+       - Persoon toevoegen aan gereserveerde locker
+         ...
+  
 ### State diagram
 ![State Diagram](img/state_diagram_raspberry_pi.png)
 
