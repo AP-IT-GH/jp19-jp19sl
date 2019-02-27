@@ -44,7 +44,7 @@ Locker kan ontgrendeld worden via studenten kaart en smartphone. Het kiezen welk
 |Elektronisch slot|Werkspanning   |9V       |12V  |
 |                 |Stroom         |500mA(9V)|650mA(12V)|
 |                 |Totale stroom(8 lockers)|4A|5.2A|
-|Reed sensor      |Switching spanning|      |200V |
+|Reed sensor      |Switching spanning|6V      |200V |
 |                 |Stroom         |10mA     |1.25A|
 |RFID RC522       |Stroom         |13mA     |26mA |
 |                 |Spanning       |         |3.3V |
