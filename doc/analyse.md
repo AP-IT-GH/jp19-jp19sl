@@ -81,7 +81,7 @@ Locker kan ontgrendeld worden via studenten kaart en smartphone. Het kiezen welk
     - GET : opvragen van:
        - locker status, open of gesloten
        - User profile data
-       - Acess Logs
+       - Access Logs
     - POST: 
        - Het openen van een locker
        - Aanmaken van user
