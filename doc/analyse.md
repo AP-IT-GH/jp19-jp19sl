@@ -35,7 +35,7 @@ We hebben gekozen om al bestaande lockers te nemen en hier ons systeem in te ins
 ![Locker kast](img/lockerkast.jpg)
 
 ## Hardware analyse
-![Hardware Analyse](img/hardware_scheme.png)
+![Hardware Analyse](img/Hardware-Diagram.png) 
 Locker kan ontgrendeld worden via studenten kaart en smartphone. Het kiezen welke locker je wilt openen gebeurd via touchsreen. Dit wordt bediend door 1 Raspberry PI die in verbinding is met een andere Raspberry PI die de reed contacten leest en de solenoid locks ontgrendeld.
 
 ### Specificatietabel
@@ -44,7 +44,7 @@ Locker kan ontgrendeld worden via studenten kaart en smartphone. Het kiezen welk
 |Elektronisch slot|Werkspanning   |9V       |12V  |
 |                 |Stroom         |500mA(9V)|650mA(12V)|
 |                 |Totale stroom(8 lockers)|4A|5.2A|
-|Reed sensor      |Switching spanning|      |200V |
+|Reed sensor      |Switching spanning|6V      |200V |
 |                 |Stroom         |10mA     |1.25A|
 |RFID RC522       |Stroom         |13mA     |26mA |
 |                 |Spanning       |         |3.3V |
@@ -61,17 +61,34 @@ Locker kan ontgrendeld worden via studenten kaart en smartphone. Het kiezen welk
 | Touchscreen   | Gebruiksgemak, visualisatie           |Keypad  |
 | Elektronisch slot| Solenoid, veiliger omdat zelfs als de stroom uitvalt de locker deur nog steeds vergrendeld blijft waardoor alles wat erin zit veilig geborgen blijft, terwijl bij een magnetisch slot bij stroomuitval de locker deur open komt te staan| magnetisch slot|
 |Reed sensor| De MK04 omdat deze bijna onzichtbaar is voor het oog. De werkspanning zijn veilig, hier komen we nooit van in de buurt.| 59140 RS|
-|RGB Led| Makkelijk om iets te visualiseren | Speaker, LCD|
+|RGB Led| Makkelijk om iets te visualiseren, laag energieverbruik | Speaker, LCD|
 
 ## Software analyse
 ### Data In -en Outputs
 
 | Blok          | Data In       | Data Uit          |
 | ------------- | ------------- | -----             |
-| Raspberry Pi  | API calls     | Digital Out       |
-| Web Server    | nvt.          | API calls         |
+| Raspberry Pi  | API calls*    | Digital Out       |
+| Web Server    | API calls*    | API calls*        |
 | Solenoid lock | 12 V          | nvt.              |
 | Reed Sensor   | nvt.          | Digital HIGH/LOW  |
+
+#### API Calls* 
+  * RPI
+    - GET : opvragen van locker status, open of gesloten (webserver request).
+    - POST: Het openen van een locker.
+  * Web Server:
+    - GET : opvragen van:
+       - locker status, open of gesloten
+       - User profile data
+       - Acess Logs
+    - POST: 
+       - Het openen van een locker
+       - Aanmaken van user
+       - Nieuwe reservatie
+       - Persoon toevoegen aan gereserveerde locker
+         ...
+  
 ### State diagram
 ![State Diagram](img/state_diagram.png)
 
