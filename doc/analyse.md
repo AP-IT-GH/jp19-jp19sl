@@ -90,7 +90,7 @@ Locker kan ontgrendeld worden via studenten kaart en smartphone. Het kiezen welk
          ...
   
 ### State diagram
-![State Diagram](img/state_diagram_raspberry_pi.png)
+![State Diagram](img/state_diagram.png)
 
 ### Flowchart
 #### Main
