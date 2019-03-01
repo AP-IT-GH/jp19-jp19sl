@@ -73,7 +73,7 @@ Locker kan ontgrendeld worden via studenten kaart en smartphone. Het kiezen welk
 | Solenoid lock | 12 V          | nvt.              |
 | Reed Sensor   | nvt.          | Digital HIGH/LOW  |
 ### State diagram
-![State Diagram](img/state_diagram_raspberry_pi.png)
+![State Diagram](img/state_diagram.png)
 
 ### Flowchart
 #### Main
