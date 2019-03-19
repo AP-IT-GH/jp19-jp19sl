@@ -77,7 +77,7 @@ Locker kan ontgrendeld worden via studenten kaart en smartphone. Het kiezen welk
   * RPI
     - GET : opvragen van locker status, open of gesloten
            URL: http://domain.com/api/v1/lockers
-    - POST: Het openen van een locker
+    - PUT: Het openen van een locker
            URL: http://domain.com/api/v1/locker/{id}
   * Web Server:
     - GET : opvragen van:
