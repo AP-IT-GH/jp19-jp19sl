@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+import * as mongoose from "mongoose";
+const Schema = mongoose.Schema;
 
-var StudentSchema = new Schema({
+const StudentSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -27,5 +27,4 @@ var StudentSchema = new Schema({
   updated_at: Date
 });
 
-let Student = mongoose.model('Student', StudentSchema);
-module.exports = Student;
+export let Student = mongoose.model("Student", StudentSchema);
