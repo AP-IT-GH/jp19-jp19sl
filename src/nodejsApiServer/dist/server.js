@@ -34,6 +34,7 @@ app.use("/api", router);
 router.route("/lockers")
     .get((req, res) => {
     locker_1.Locker.find()
+        .populate("reservation")
         .then((data) => {
         res.json(data);
     });
@@ -104,6 +105,7 @@ router.route("/students/:id")
 router.route("/reservations")
     .get((req, res) => {
     reservation_1.Reservation.find()
+        .populate("student")
         .then((data) => {
         res.json(data);
     });
@@ -115,7 +117,7 @@ router.route("/reservations")
             res.send(err);
         }
         else {
-            const lockerToUpdate = locker_1.Locker.findById(req.body.locker);
+            // const lockerToUpdate = Locker.findById(req.body.locker);
             res.sendStatus(200);
         }
     });
