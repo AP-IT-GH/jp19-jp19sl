@@ -35,7 +35,7 @@ We hebben gekozen om al bestaande lockers te nemen en hier ons systeem in te ins
 ![Locker kast](img/lockerkast.jpg)
 
 ## Hardware analyse
-![Hardware Analyse](img/Hardware_Diagram_finaal.jpg) 
+![Hardware Analyse](img/Hardware-Diagram.png) 
 Locker kan ontgrendeld worden via studenten kaart en smartphone. Het kiezen welke locker je wilt openen gebeurd via touchsreen. Dit wordt bediend door 1 Raspberry PI die in verbinding is met een andere Raspberry PI die de reed contacten leest en de solenoid locks ontgrendeld.
 
 ### Specificatietabel
@@ -44,7 +44,7 @@ Locker kan ontgrendeld worden via studenten kaart en smartphone. Het kiezen welk
 |Elektronisch slot|Werkspanning   |9V       |12V  |
 |                 |Stroom         |500mA(9V)|650mA(12V)|
 |                 |Totale stroom(8 lockers)|4A|5.2A|
-|Reed sensor      |Switching spanning|      |200V |
+|Reed sensor      |Switching spanning|6V      |200V |
 |                 |Stroom         |10mA     |1.25A|
 |RFID RC522       |Stroom         |13mA     |26mA |
 |                 |Spanning       |         |3.3V |
@@ -68,12 +68,37 @@ Locker kan ontgrendeld worden via studenten kaart en smartphone. Het kiezen welk
 
 | Blok          | Data In       | Data Uit          |
 | ------------- | ------------- | -----             |
-| Raspberry Pi  | API calls     | Digital Out       |
-| Web Server    | nvt.          | API calls         |
+| Raspberry Pi  | API calls*    | Digital Out       |
+| Web Server    | API calls*    | API calls*        |
 | Solenoid lock | 12 V          | nvt.              |
 | Reed Sensor   | nvt.          | Digital HIGH/LOW  |
+
+#### API Calls* 
+  * RPI
+    - GET : opvragen van locker status, open of gesloten
+           URL: http://domain.com/api/v1/lockers
+    - POST: Het openen van een locker
+           URL: http://domain.com/api/v1/locker/{id}
+  * Web Server:
+    - GET : opvragen van:
+       - locker status, open of gesloten
+            URL: http://domain.com/api/v1/locker/{id}/status
+       - User profile data
+            URL: http://domain.com/api/v1/users/{id}
+       - Access Logs
+             URL: http://domain.com/api/v1/locker/{id}/logs
+    - POST: 
+       - Het openen / sluiten van een locker
+             URL: http://domain.com/api/v1/locker/{id}/status
+       - Aanmaken van user
+             URL: http://domain.com/api/v1/users
+       - Nieuwe reservatie
+             URL: http://domain.com/api/v1/reservations
+       - Persoon toevoegen aan gereserveerde locker
+         ...
+  
 ### State diagram
-![State Diagram](img/state_diagram_raspberry_pi.png)
+![State Diagram](img/state_diagram.png)
 
 ### Flowchart
 #### Main
