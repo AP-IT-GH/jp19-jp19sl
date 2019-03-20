@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { BarcodeReaderService } from '../services/barcode-reader.service';
 
 @Component({
   selector: 'app-home',
@@ -8,16 +7,8 @@ import { BarcodeReaderService } from '../services/barcode-reader.service';
 })
 export class HomePage implements OnInit{
 
-  inputfield: string;
-  barcode: string;
-  constructor(private barcodeSvc:BarcodeReaderService) {}
+  constructor() {}
 
   ngOnInit(){}
 
-  onKey(event: any) {
-    this.inputfield = "";
-    this.barcode = event.target.value;
-    console.log(this.barcodeSvc.studentNummer(this.barcode));
-    this.inputfield = "";
-  }
 }
