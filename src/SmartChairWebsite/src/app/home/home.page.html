@@ -1,11 +1,12 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      SmartChair
-    </ion-title>
-  </ion-toolbar>
+	<ion-toolbar>
+		<ion-title>
+			SmartChair
+		</ion-title>
+	</ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <app-barcode-reader></app-barcode-reader>
+	<app-barcode-reader *ngIf="barcodeSvc.barcodeScanned"></app-barcode-reader>
+	<app-deposit-withdraw></app-deposit-withdraw>
 </ion-content>

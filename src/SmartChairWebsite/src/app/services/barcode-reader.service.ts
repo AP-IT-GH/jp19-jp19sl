@@ -4,6 +4,7 @@ import { Injectable } from "@angular/core";
 	providedIn: "root"
 })
 export class BarcodeReaderService {
+	barcodeScanned: boolean = false;
 	constructor() {}
 
 	studentNummer(unfilterdBarcode: string) {
@@ -15,6 +16,7 @@ export class BarcodeReaderService {
 		if (prefix == prefixBarcode) {
 			console.log("Studentenkaart van ap");
 			let snummer = unfilterdBarcode.substring(8, 14);
+			this.barcodeScanned = true;
 			return snummer;
 		} else {
 			console.log("Geen studentenkaart van ap");
