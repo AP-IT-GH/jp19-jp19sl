@@ -5,6 +5,7 @@ import mongoose = require("mongoose");
 import { Locker } from "./models/locker";
 import { Reservation } from "./models/reservation";
 import { Student } from "./models/student";
+import cors = require("cors");
 const app = express();
 var server = require("http").createServer(app);
 var io = require("socket.io")(server);
@@ -20,6 +21,7 @@ changeStream.on("change", (change) => {
 io.on("connection", function(client) {
 	console.log("Client " + client.id + " connected...");
 });
+app.use(cors);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 const port = 3000;
