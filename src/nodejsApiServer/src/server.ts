@@ -5,27 +5,26 @@ import mongoose = require("mongoose");
 import { Locker } from "./models/locker";
 import { Reservation } from "./models/reservation";
 import { Student } from "./models/student";
-import cors = require("cors");
-const app = express();
-var server = require("http").createServer(app);
-var io = require("socket.io")(server);
-const changeStream = Locker.watch(); // { fullDocument: "updateLookup" } meegeven als parameter voor het volledige document terug te krijgen
+let cors = require("cors");
+let app = express();
+let server = require("http").createServer(app);
+let io = require("socket.io")(server);
+let changeStream = Locker.watch(); // { fullDocument: "updateLookup" } meegeven als parameter voor het volledige document terug te krijgen
+let port = 3000;
+let router = express.Router();
 
 mongoose.connect("mongodb://localhost:27017/smartlocker?replicaSet=rs0").catch((err) => console.log(err));
 
 changeStream.on("change", (change) => {
-	console.log(change);
 	io.emit("changeData", change);
 });
 
 io.on("connection", function(client) {
 	console.log("Client " + client.id + " connected...");
 });
-app.use(cors);
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-const port = 3000;
-const router = express.Router();
 
 // // all of our routes are prefixed with /api
 // ------------- LOCKER ---------------------------------------

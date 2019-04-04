@@ -16,33 +16,30 @@ const mongoose = require("mongoose");
 const locker_1 = require("./models/locker");
 const reservation_1 = require("./models/reservation");
 const student_1 = require("./models/student");
-const app = express_1.default();
-var server = require("http").createServer(app);
-var io = require("socket.io")(server);
-const changeStream = locker_1.Locker.watch(); // { fullDocument: "updateLookup" } meegeven als parameter voor het volledige document terug te krijgen
+let cors = require("cors");
+let app = express_1.default();
+let server = require("http").createServer(app);
+let io = require("socket.io")(server);
+let changeStream = locker_1.Locker.watch(); // { fullDocument: "updateLookup" } meegeven als parameter voor het volledige document terug te krijgen
+let port = 3000;
+let router = express_1.default.Router();
 mongoose.connect("mongodb://localhost:27017/smartlocker?replicaSet=rs0").catch((err) => console.log(err));
 changeStream.on("change", (change) => {
-    console.log(change); // You could parse out the needed info and send only that data.
+    console.log(change);
     io.emit("changeData", change);
 });
 io.on("connection", function (client) {
     console.log("Client " + client.id + " connected...");
-    // client.on("join", function(data) {
-    // 	console.log(data);
-    // });
 });
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-const port = 3000;
-const router = express_1.default.Router();
-// // REGISTER OUR ROUTES -------------------------------
-// // all of our routes will be prefixed with /api
+// // all of our routes are prefixed with /api
 // ------------- LOCKER ---------------------------------------
 // GET localhost:8080/api/lockers
 app.use("/api", router);
 router.route("/lockers").get((req, res) => {
+    console.log("lockers get called");
     locker_1.Locker.find().populate("reservation").then((data) => {
         res.json(data);
     });
@@ -151,5 +148,5 @@ router
     });
 });
 server.listen(port);
-console.log("127.0.0.1:" + port);
+console.log("started the server at 127.0.0.1:" + port);
 //# sourceMappingURL=server.js.map
