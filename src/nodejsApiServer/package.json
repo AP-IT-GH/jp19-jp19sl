@@ -2,9 +2,8 @@
 	"name": "nodejsapiserver",
 	"version": "1.0.0",
 	"description": "",
-	"main": "src/dist/server.js",
+	"main": "src/server.ts",
 	"scripts": {
-		"prebuild": "tsconfig.json --fix",
 		"build": "tsc",
 		"prestart": "npm run build",
 		"start": "node dist/server.js",
