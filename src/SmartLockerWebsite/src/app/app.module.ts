@@ -11,6 +11,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { BarcodeReaderService } from "./services/barcode-reader.service";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import { LockerService } from './services/locker.service';
 
 @NgModule({
 	declarations: [AppComponent],
@@ -26,8 +27,9 @@ import { HttpClientModule } from "@angular/common/http";
 		StatusBar,
 		SplashScreen,
 		{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-		BarcodeReaderService
+		BarcodeReaderService,
+		LockerService
 	],
 	bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
