@@ -5,17 +5,20 @@ import { HttpClient } from "@angular/common/http";
 	providedIn: "root"
 })
 export class LockerService {
+	apiUrl: string = "http://localhost:3000/api";
+
 	constructor(private httpSvc: HttpClient) { }
 
-	GetLockerState() { }
-	// PUT localhost:3000/api/lockers/<id>
-	SetLockerState(id: string, state: boolean) {
-		this.httpSvc
-			.put("localhost:3000/api/Lockers/" + id, {
-				open: state
-			})
-			.subscribe(res => console.log(res)
-				, err => console.error(err)
-			);
+	GetStudents() {
+		this.httpSvc.get(this.apiUrl + "/students").subscribe(success => {
+			console.log(success);
+		})
 	}
+}
+
+interface Locker {
+	open: boolean,
+	users: string[],
+	lockerName: string,
+	lokaal: string
 }
