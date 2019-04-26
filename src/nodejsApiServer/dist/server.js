@@ -12,38 +12,44 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const bodyParser = __importStar(require("body-parser"));
 const express_1 = __importDefault(require("express"));
-// import * as mongoose from "mongoose";
 const mongoose = require("mongoose");
 const locker_1 = require("./models/locker");
 const reservation_1 = require("./models/reservation");
 const student_1 = require("./models/student");
-const app = express_1.default();
-mongoose.connect("mongodb://localhost:27017/smartlocker").catch((err) => console.log(err));
-// this will let us get the data from a POST
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+let cors = require("cors");
+let app = express_1.default();
+let server = require("http").createServer(app);
+let io = require("socket.io")(server);
+let changeStream = locker_1.Locker.watch(); // { fullDocument: "updateLookup" } meegeven als parameter voor het volledige document terug te krijgen
+let port = 3000;
+let router = express_1.default.Router();
+mongoose.connect("mongodb://localhost:27017/smartlocker?replicaSet=rs0").catch((err) => console.log(err));
+changeStream.on("change", (change) => {
+    console.log(change);
+    io.emit("changeData", change);
+});
+io.on("connection", function (client) {
+    console.log("Client " + client.id + " connected...");
+});
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-const port = process.env.PORT || 8080;
-const router = express_1.default.Router();
-// // REGISTER OUR ROUTES -------------------------------
-// // all of our routes will be prefixed with /api
+// // all of our routes are prefixed with /api
 // ------------- LOCKER ---------------------------------------
 // GET localhost:8080/api/lockers
 app.use("/api", router);
-router.route("/lockers")
-    .get((req, res) => {
-    locker_1.Locker.find()
-        .then((data) => {
+router.route("/lockers").get((req, res) => {
+    console.log("lockers get called");
+    locker_1.Locker.find().populate("reservation").then((data) => {
         res.json(data);
     });
 });
 // GET localhost:8080/api/lockers/<id>
-router.route("/lockers/:id")
+router
+    .route("/lockers/:id")
     .get((req, res) => {
     const id = req.params.id;
-    locker_1.Locker.findById(id)
-        .then((data) => {
+    locker_1.Locker.findById(id).then((data) => {
         res.json(data);
     });
 })
@@ -61,10 +67,10 @@ router.route("/lockers/:id")
     });
 });
 // ---------------- STUDENTS -----------------------------
-router.route("/students")
+router
+    .route("/students")
     .get((req, res) => {
-    student_1.Student.find()
-        .then((data) => {
+    student_1.Student.find().then((data) => {
         res.json(data);
     });
 })
@@ -79,11 +85,11 @@ router.route("/students")
         }
     });
 });
-router.route("/students/:id")
+router
+    .route("/students/:id")
     .get((req, res) => {
     const id = req.params.id;
-    student_1.Student.findById(id)
-        .then((data) => {
+    student_1.Student.findById(id).then((data) => {
         res.json(data);
     });
 })
@@ -101,10 +107,10 @@ router.route("/students/:id")
     });
 });
 // ---------------- Reservations -----------------------------
-router.route("/reservations")
+router
+    .route("/reservations")
     .get((req, res) => {
-    reservation_1.Reservation.find()
-        .then((data) => {
+    reservation_1.Reservation.find().populate("student").then((data) => {
         res.json(data);
     });
 })
@@ -115,16 +121,16 @@ router.route("/reservations")
             res.send(err);
         }
         else {
-            const lockerToUpdate = locker_1.Locker.findById(req.body.locker);
+            // const lockerToUpdate = Locker.findById(req.body.locker);
             res.sendStatus(200);
         }
     });
 });
-router.route("/reservations/:id")
+router
+    .route("/reservations/:id")
     .get((req, res) => {
     const id = req.params.id;
-    reservation_1.Reservation.findById(id)
-        .then((data) => {
+    reservation_1.Reservation.findById(id).then((data) => {
         res.json(data);
     });
 })
@@ -141,6 +147,6 @@ router.route("/reservations/:id")
         }
     });
 });
-app.listen(port);
-console.log("127.0.0.1:" + port);
+server.listen(port);
+console.log("started the server at 127.0.0.1:" + port);
 //# sourceMappingURL=server.js.map
