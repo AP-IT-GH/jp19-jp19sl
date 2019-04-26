@@ -74,19 +74,40 @@ router
 			}
 		});
 	});
+// router
+// 	.route("/students/:id")
+// 	.get((req: Request, res: Response) => {
+// 		const id = req.params.id;
+// 		Student.findById(id).then((data) => {
+// 			res.json(data);
+// 		});
+// 	})
+// 	// PUT localhost:8080/api/Student/<id>
+// 	.put((req: Request, res: Response) => {
+// 		const updatedStudents = req.body;
+// 		const id = req.params.id;
+// 		Student.findByIdAndUpdate(id, updatedStudents, (err) => {
+// 			if (err) {
+// 				res.send(err);
+// 			} else {
+// 				res.sendStatus(200);
+// 			}
+// 		});
+// 	});
 router
-	.route("/students/:id")
+	.route("/students/:studentNumber")
+	//GET localhost:8080/api/Student/<student_number>
 	.get((req: Request, res: Response) => {
-		const id = req.params.id;
-		Student.findById(id).then((data) => {
+		const studentNumber = req.params.studentNumber;
+		Student.find({ student_number: studentNumber }).then((data) => {
 			res.json(data);
 		});
 	})
-	// PUT localhost:8080/api/Student/<id>
+	//PUT localhost:8080/api/Student/<student_number>
 	.put((req: Request, res: Response) => {
-		const updatedStudents = req.body;
-		const id = req.params.id;
-		Student.findByIdAndUpdate(id, updatedStudents, (err) => {
+		const updatedStudent = req.body;
+		const studentNumber = req.params.studentNumber;
+		Student.findOneAndUpdate({ student_number: studentNumber }, updatedStudent, (err) => {
 			if (err) {
 				res.send(err);
 			} else {

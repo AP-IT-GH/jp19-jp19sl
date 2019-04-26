@@ -25,7 +25,6 @@ let port = 3000;
 let router = express_1.default.Router();
 mongoose.connect("mongodb://localhost:27017/smartlocker?replicaSet=rs0").catch((err) => console.log(err));
 changeStream.on("change", (change) => {
-    console.log(change);
     io.emit("changeData", change);
 });
 io.on("connection", function (client) {
@@ -39,7 +38,6 @@ app.use(bodyParser.json());
 // GET localhost:8080/api/lockers
 app.use("/api", router);
 router.route("/lockers").get((req, res) => {
-    console.log("lockers get called");
     locker_1.Locker.find().populate("reservation").then((data) => {
         res.json(data);
     });
@@ -85,19 +83,40 @@ router
         }
     });
 });
+// router
+// 	.route("/students/:id")
+// 	.get((req: Request, res: Response) => {
+// 		const id = req.params.id;
+// 		Student.findById(id).then((data) => {
+// 			res.json(data);
+// 		});
+// 	})
+// 	// PUT localhost:8080/api/Student/<id>
+// 	.put((req: Request, res: Response) => {
+// 		const updatedStudents = req.body;
+// 		const id = req.params.id;
+// 		Student.findByIdAndUpdate(id, updatedStudents, (err) => {
+// 			if (err) {
+// 				res.send(err);
+// 			} else {
+// 				res.sendStatus(200);
+// 			}
+// 		});
+// 	});
 router
-    .route("/students/:id")
+    .route("/students/:studentNumber")
+    //GET localhost:8080/api/Student/<student_number>
     .get((req, res) => {
-    const id = req.params.id;
-    student_1.Student.findById(id).then((data) => {
+    const studentNumber = req.params.studentNumber;
+    student_1.Student.find({ student_number: studentNumber }).then((data) => {
         res.json(data);
     });
 })
-    // PUT localhost:8080/api/Student/<id>
+    //PUT localhost:8080/api/Student/<student_number>
     .put((req, res) => {
-    const updatedStudents = req.body;
-    const id = req.params.id;
-    student_1.Student.findByIdAndUpdate(id, updatedStudents, (err) => {
+    const updatedStudent = req.body;
+    const studentNumber = req.params.studentNumber;
+    student_1.Student.findOneAndUpdate({ student_number: studentNumber }, updatedStudent, (err) => {
         if (err) {
             res.send(err);
         }
