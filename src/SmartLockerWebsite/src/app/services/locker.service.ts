@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { BarcodeReaderService } from './barcode-reader.service';
 
 @Injectable({
 	providedIn: "root"
@@ -7,10 +8,10 @@ import { HttpClient } from "@angular/common/http";
 export class LockerService {
 	apiUrl: string = "http://localhost:3000/api";
 
-	constructor(private httpSvc: HttpClient) { }
+	constructor(private httpSvc: HttpClient, private barcodeSvc: BarcodeReaderService) { }
 
 	GetStudents() {
-		this.httpSvc.get(this.apiUrl + "/students").subscribe(success => {
+		this.httpSvc.get(this.apiUrl + "/students/" + this.barcodeSvc.studentNummer).subscribe(success => {
 			console.log(success);
 		})
 	}
