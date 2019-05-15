@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LockerService } from '../services/locker.service';
 
 @Component({
   selector: 'app-deposit-withdraw',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DepositWithdrawPage implements OnInit {
 
-  constructor() { }
+  constructor(private lockerSvc: LockerService) { }
 
   ngOnInit() {
   }
