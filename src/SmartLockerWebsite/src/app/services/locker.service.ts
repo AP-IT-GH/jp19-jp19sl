@@ -8,6 +8,8 @@ import { BarcodeReaderService } from './barcode-reader.service';
 export class LockerService {
 	apiUrl: string = "http://localhost:3000/api";
 
+	lockers: ILocker;
+
 	constructor(private httpSvc: HttpClient, private barcodeSvc: BarcodeReaderService) { }
 
 	GetStudents() {
@@ -17,12 +19,23 @@ export class LockerService {
 			});
 	}
 
+	GetLockers() {
+		this.httpSvc.get<ILocker>(this.apiUrl + "/lockers")
+			.subscribe(success => {
+				this.lockers = success;
+				console.log(success);
+			});
+	}
+
 	OpenLocker(lockerId) {
 		console.log("Open locker function")
 		this.httpSvc.put(this.apiUrl + "/lockers/" + lockerId, { "open": true })
 			.subscribe(success => {
-
+				console.log(success);
+			}, error => {
+				console.log("Error: " + error);
 			});
+		this.GetLockers();
 	}
 
 }

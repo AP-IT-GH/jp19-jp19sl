@@ -1,28 +1,35 @@
 <ion-text color="primary">
 	<h2>Toegang tot volgende lockers</h2>
 </ion-text>
-<ion-card>
-	<ion-card-header>
-		<ion-card-title>Lokaal 1.03 <ion-badge color="success">Open</ion-badge>
-		</ion-card-title>
-		<ion-card-title>Lokaal 1.03 <ion-badge color="danger">Closed</ion-badge>
-		</ion-card-title>
+<ion-grid>
+	<ion-row>
+		<ion-col size="4" *ngFor="let locker of lockerSvc.lockers">
+			<ion-card>
+				<ion-card-header>
+					<ion-card-title *ngIf="locker.open">{{locker.lockerName}}<ion-badge color="success">Open</ion-badge>
+					</ion-card-title>
+					<ion-card-title *ngIf="!locker.open">{{locker.lockerName}}<ion-badge color="danger">Closed
+						</ion-badge>
+					</ion-card-title>
 
-		<ion-card-subtitle>Namen gebruikers met toegang tot locker</ion-card-subtitle>
-	</ion-card-header>
+					<ion-card-subtitle>Namen gebruikers met toegang tot locker</ion-card-subtitle>
+				</ion-card-header>
 
-	<ion-card-content>
-		<ion-text color="primary">
-			<h1>Locker naam</h1>
-		</ion-text>
-		<ion-text color="dark">
-			<h2>Inhoud</h2>
-		</ion-text>
-		<ion-text color="danger">
-			<h2>Vergeet de locker niet te sluiten!</h2>
-		</ion-text>
-		<ion-chip color="success" outline="true" (click)="lockerSvc.OpenLocker('5c891c17d7fd701ca433173a')">
-			<ion-label color="success">Open locker</ion-label>
-		</ion-chip>
-	</ion-card-content>
-</ion-card>
+				<ion-card-content>
+					<ion-text color="primary">
+						<h1>{{locker.lockerName}}</h1>
+					</ion-text>
+					<ion-text color="dark">
+						<h2>Inhoud</h2>
+					</ion-text>
+					<ion-text color="danger" *ngIf="locker.open">
+						<h2>Vergeet de locker niet te sluiten!</h2>
+					</ion-text>
+					<ion-chip *ngIf="!locker.open" color="success" outline="true" (click)="OpenLocker(locker._id)">
+						<ion-label color="success">Open locker</ion-label>
+					</ion-chip>
+				</ion-card-content>
+			</ion-card>
+		</ion-col>
+	</ion-row>
+</ion-grid>

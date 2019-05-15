@@ -12,5 +12,6 @@ export class HomePage implements OnInit {
 
 	ngOnInit() {
 		this.lockerSvc.GetStudents();
+		this.lockerSvc.GetLockers();
 	}
 }

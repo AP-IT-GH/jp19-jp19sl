@@ -13,4 +13,7 @@ export class DepositWithdrawPage implements OnInit {
   ngOnInit() {
   }
 
+  OpenLocker(id) {
+    this.lockerSvc.OpenLocker(id);
+  }
 }
