@@ -6,10 +6,12 @@
 		<ion-col size="4" *ngFor="let locker of lockerSvc.lockers">
 			<ion-card>
 				<ion-card-header>
-					<ion-card-title *ngIf="locker.open">{{locker.lockerName}}<ion-badge color="success">Open</ion-badge>
+					<ion-card-title *ngIf="locker.open">
+						<ion-badge color="success">Open</ion-badge> {{locker.lockerName}}
 					</ion-card-title>
-					<ion-card-title *ngIf="!locker.open">{{locker.lockerName}}<ion-badge color="danger">Closed
-						</ion-badge>
+					<ion-card-title *ngIf="!locker.open">
+						<ion-badge color="danger">Closed
+						</ion-badge> {{locker.lockerName}}
 					</ion-card-title>
 
 					<ion-card-subtitle>Namen gebruikers met toegang tot locker</ion-card-subtitle>

@@ -6,7 +6,7 @@ import { BarcodeReaderService } from './barcode-reader.service';
 	providedIn: "root"
 })
 export class LockerService {
-	apiUrl: string = "http://localhost:3000/api";
+	apiUrl: string = "https://smart-locker-234209.appspot.com/api";
 
 	lockers: ILocker;
 
