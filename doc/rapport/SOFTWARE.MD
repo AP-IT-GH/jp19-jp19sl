@@ -8,7 +8,7 @@
 Service om uit de string dat op de barcode van de studentenkaart staat een studentnummer te krijgen.
 | String studentenkaart | Studentnummer|
 |---------------------- | -------------|
-| ]C1S0000**102518**86      | 102518
+| ]C1S0000**102518**86      | 102518 |
 De *BarcodeService* filtert de studentennummer uit de string.
 
 **]C1S0000** is de prefix van AP studentenkaarten hier wordt ook op nagekeken zodat niet andere barcodes gescant worden en onnodige foute requests gebeuren.
