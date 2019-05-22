@@ -25,4 +25,9 @@ export class BarcodeReaderService {
 			return "";
 		}
 	}
+
+	Clean() {
+		this.barcodeScanned = false;
+		this.studentNummer = "";
+	}
 }

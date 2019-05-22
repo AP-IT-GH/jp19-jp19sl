@@ -31,9 +31,13 @@ export class LockerService {
 			}, error => {
 				console.log("Error: " + error);
 			});
+
 		this.GetLockers();
 	}
 
+	Clean() {
+		this.lockers = [];
+	}
 }
 
 export interface IStudent {

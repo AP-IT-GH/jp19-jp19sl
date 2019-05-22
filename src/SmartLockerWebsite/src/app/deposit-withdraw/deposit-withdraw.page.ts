@@ -19,4 +19,9 @@ export class DepositWithdrawPage implements OnInit {
   OpenLocker(id) {
     this.lockerSvc.OpenLocker(id);
   }
+
+  ExitStudentPage() {
+    this.lockerSvc.Clean();
+    this.barcodeSvc.Clean();
+  }
 }
