@@ -8,30 +8,26 @@ import { BarcodeReaderService } from './barcode-reader.service';
 export class LockerService {
 	apiUrl: string = "https://smart-locker-234209.appspot.com/api";
 
-	lockers: ILocker;
+	lockers: ILocker[] = [];
 
 	constructor(private httpSvc: HttpClient, private barcodeSvc: BarcodeReaderService) { }
 
-	GetStudents() {
-		this.httpSvc.get(this.apiUrl + "/students/" + this.barcodeSvc.studentNummer)
-			.subscribe(success => {
-				console.log(success);
-			});
-	}
-
 	GetLockers() {
-		this.httpSvc.get<ILocker>(this.apiUrl + "/lockers")
-			.subscribe(success => {
-				this.lockers = success;
-				console.log(success);
+		this.lockers = [];
+		this.httpSvc.get<IReservation[]>(this.apiUrl + "/students/" + this.barcodeSvc.studentNummer + "/reservations")
+			.subscribe((data: IReservation[]) => {
+				console.log(data);
+				data.forEach((reservation: IReservation) => {
+					this.lockers.push(reservation.locker)
+				});
 			});
 	}
 
 	OpenLocker(lockerId) {
 		console.log("Open locker function")
 		this.httpSvc.put(this.apiUrl + "/lockers/" + lockerId, { "open": true })
-			.subscribe(success => {
-				console.log(success);
+			.subscribe(data => {
+				console.log(data);
 			}, error => {
 				console.log("Error: " + error);
 			});
@@ -53,7 +49,7 @@ export interface IStudent {
 export interface IReservation {
 	student: IStudent[];
 	_id: string;
-	locker: string;
+	locker: ILocker;
 	startDate: Date;
 	endDate: Date;
 	created_at: Date;

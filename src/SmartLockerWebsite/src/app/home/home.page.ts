@@ -11,7 +11,6 @@ export class HomePage implements OnInit {
 	constructor(private barcodeSvc: BarcodeReaderService, private lockerSvc: LockerService) { }
 
 	ngOnInit() {
-		this.lockerSvc.GetStudents();
-		this.lockerSvc.GetLockers();
+
 	}
 }

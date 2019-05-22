@@ -5,9 +5,10 @@ import { Injectable } from "@angular/core";
 })
 export class BarcodeReaderService {
 	barcodeScanned: boolean = false;
-	constructor() {}
+	studentNummer: string;
+	constructor() { }
 
-	studentNummer(unfilterdBarcode: string) {
+	studentNummerFilter(unfilterdBarcode: string) {
 		if (unfilterdBarcode.length > 16) {
 			unfilterdBarcode = unfilterdBarcode.substring(16, 32);
 		}
@@ -17,6 +18,7 @@ export class BarcodeReaderService {
 			console.log("Studentenkaart van ap");
 			let snummer = unfilterdBarcode.substring(8, 14);
 			this.barcodeScanned = true;
+			this.studentNummer = snummer;
 			return snummer;
 		} else {
 			console.log("Geen studentenkaart van ap");

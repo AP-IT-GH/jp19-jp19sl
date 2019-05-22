@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LockerService } from '../services/locker.service';
+import { BarcodeReaderService } from '../services/barcode-reader.service';
 
 @Component({
   selector: 'app-deposit-withdraw',
@@ -8,7 +9,9 @@ import { LockerService } from '../services/locker.service';
 })
 export class DepositWithdrawPage implements OnInit {
 
-  constructor(private lockerSvc: LockerService) { }
+  constructor(private lockerSvc: LockerService, private barcodeSvc: BarcodeReaderService) {
+    this.lockerSvc.GetLockers();
+  }
 
   ngOnInit() {
   }
