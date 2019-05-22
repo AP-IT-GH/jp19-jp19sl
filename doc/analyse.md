@@ -74,28 +74,7 @@ Locker kan ontgrendeld worden via studenten kaart en smartphone. Het kiezen welk
 | Reed Sensor   | nvt.          | Digital HIGH/LOW  |
 
 #### API Calls* 
-  * RPI
-    - GET : opvragen van locker status, open of gesloten
-           URL: http://domain.com/api/v1/lockers
-    - PUT: Het openen van een locker
-           URL: http://domain.com/api/v1/locker/{id}
-  * Web Server:
-    - GET : opvragen van:
-       - locker status, open of gesloten
-            URL: http://domain.com/api/v1/locker/{id}/status
-       - User profile data
-            URL: http://domain.com/api/v1/users/{id}
-       - Access Logs
-             URL: http://domain.com/api/v1/locker/{id}/logs
-    - POST: 
-       - Het openen / sluiten van een locker
-             URL: http://domain.com/api/v1/locker/{id}/status
-       - Aanmaken van user
-             URL: http://domain.com/api/v1/users
-       - Nieuwe reservatie
-             URL: http://domain.com/api/v1/reservations
-       - Persoon toevoegen aan gereserveerde locker
-         ...
+ //TOEVOEGEN LINK NAAR API DOCUMENTATION
   
 ### State diagram
 ![State Diagram](img/state_diagram.png)
