@@ -1,5 +1,7 @@
 # Meetings
 _Team: Jarno, Oussama, Imad & Afaq_
+
+**Het team heeft elkaar geupdate gehouden via Facebook & Discord**
 ## Meeting 1
  - Opdracht: brainstorm concept uitwerken
     - Concepten samengevoegd tot 1 concept tijdens de meeting.
@@ -15,7 +17,8 @@ _Team: Jarno, Oussama, Imad & Afaq_
 
 ## Meeting 3
 - Bespreken over testen solenoid en te gebruiken software
-
+### Tussen meetings door
+- Oussama: Uitleg gegeven over aanspreken API
 ## Meeting 4
 - Powerpoint tussenpresentatie afwerken
 
