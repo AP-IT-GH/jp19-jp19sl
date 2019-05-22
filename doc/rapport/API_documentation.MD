@@ -1,5 +1,5 @@
 # API Documentation
-This API reference is organized by resource type. 
+This API reference is organized by resource type.   
 The base api url is : [https://smart-locker-234209.appspot.com/api](https://smart-locker-234209.appspot.com/)
 ## Lockers
 ###  Model
