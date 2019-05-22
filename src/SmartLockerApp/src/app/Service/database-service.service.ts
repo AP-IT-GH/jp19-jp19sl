@@ -7,52 +7,62 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DatabaseService {
 
-  getApiUrl :string = "http://127.0.0.1:3000/api";
+  //ApiUrl :string = "https://smart-locker-234209.appspot.com/api";
   
+  //lokaal
+  ApiUrl:string = "http://localhost:3000/api";
+
   constructor(public http: HttpClient) {}
 
   GetReservations(){
-    return this.http.get<IReservation>(`${this.getApiUrl}/reservations`);
+    return this.http.get<IReservation>(`${this.ApiUrl}/reservations`);
   }
 
   GetStudents(){
     console.log("hios")
-    return this.http.get<IStudent>(`${this.getApiUrl}/students`);
+    return this.http.get<IStudent>(`${this.ApiUrl}/students`);
   }
 
-  Reserveren(lockerID:string){
+  Reserveren(reservation:IReservation){
     console.log("gereserveerd")
-    this.http.put(this.getApiUrl + "/lockers/" + lockerID, { "isReserved": true })
+    this.http.post(this.ApiUrl + "/reservations", reservation).subscribe();
+  
+
+
+/*     this.http.put(this.getApiUrl + "/lockers/" + lockerID, { "isReserved": true })
 			.subscribe(success => {
 				console.log(success);
 			}, error => {
 				console.log("Error: " + error);
-			});
+			}); */
   }
 
   GetLockers(){
-    return this.http.get<ILocker>(`${this.getApiUrl}/lockers`);
+    return this.http.get<ILocker>(`${this.ApiUrl}/lockers`);
+  }
+
+  GetSingleLocker(id:string){
+    return this.http.get<ILocker>(`${this.ApiUrl}/lockers/${id}`);
   }
 }
 
 export interface IStudent {
-  _id: string;
+  _id?: string;
   name: string;
   lastName: string;
   student_number: number;
   group: string;
-  __v: number;
   created_at: Date;
 }
 
 export interface IReservation {
-  student: IStudent[];
-  _id: string;
-  locker: string;
+  /* student: IStudent[]; */
+  student: string[]
+  _id?: string;
+  locker: ILocker;
   startDate: Date;
   endDate: Date;
-  created_at: Date;
-  __v: number;
+  created_at?: Date;
 }
 
 export interface ILocker {

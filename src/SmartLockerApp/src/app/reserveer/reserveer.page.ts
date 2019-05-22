@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { IReservation, DatabaseService, ILocker } from '../Service/database-service.service';
+import { ILocker, IReservation, IStudent } from '../Service/database-service.service';
 import { LoadingController } from '@ionic/angular';
+import { DatabaseService } from '../Service/database-service.service';
+import { ActivatedRoute, Routes, Router } from '@angular/router';
 
 @Component({
   selector: 'app-reserveer',
@@ -13,21 +15,26 @@ export class ReserveerPage implements OnInit {
   customDayShortNames:any;
   customPickerOptions:any;
 
-  reservatie:IReservation
   lockers:ILocker
-  startDate:string;
   OpenClose:ILocker;
-  
-  constructor(public loadingController: LoadingController, public reservation: DatabaseService){
-    console.log("datum")
-    this.reservation.GetReservations().subscribe(reserveer =>{
-      console.log(reserveer)
-      this.reservatie = reserveer
+
+  resv: IReservation
+
+  locker:ILocker
+  startDate:Date = new Date();
+  endDate:Date = new Date();
+  student:IStudent
+
+  constructor(public route: Router, public ActivatedRoute: ActivatedRoute, public loadingController: LoadingController, public dbSvc: DatabaseService){
+
+    this.dbSvc.GetLockers().subscribe(locker =>{
+      console.log(locker)
+      this.lockers = locker;      
     },err => console.log(err.message))
 
-    this.reservation.GetLockers().subscribe(locker =>{
-      console.log(locker)
-      this.lockers = locker
+    this.dbSvc.GetReservations().subscribe(reser =>{
+      console.log(reser)
+      this.resv = reser;      
     },err => console.log(err.message))
   }
 
@@ -47,29 +54,28 @@ export class ReserveerPage implements OnInit {
       buttons: [{
         text: 'Save',
         handler: () => console.log('Clicked Save!')
-        }, {
-          text: 'Log',
-          handler: () => {
-            console.log('Clicked Log. Do not Dismiss.');
-            return false;
-          }
-        }]
-      }
+      }, {
+        text: 'Log',
+        handler: () => {
+          console.log('Clicked Log. Do not Dismiss.');
+          return false;
+        }
+      }]
+    }
   }
 
-  async Reserveren(){
-      const loading = await this.loadingController.create({
-        spinner: "crescent",
-        duration: 3000,
-        message: 'busy with reservation',
-        translucent: true,
-        cssClass: 'custom-class custom-loading'
-      });
+  Reserveren(lkr){
+    
+    
+    let res: IReservation = {
+      "startDate": this.startDate,
+      "endDate": this.endDate,
+      "student": ["5c893191cf2ab546cccfe986"] ,
+      "locker": lkr
+    }
+    console.log(res)
+    this.dbSvc.Reserveren(res)
 
-      return await loading.present();
+    /* this.route.navigate([`reserveren/${id}`]) */
   }
-
-  /* mee(id: string){
-    this.reservation.Reserveren(id)
-  } */
 }

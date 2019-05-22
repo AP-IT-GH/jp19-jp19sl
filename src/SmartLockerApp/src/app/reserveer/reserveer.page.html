@@ -5,40 +5,55 @@
 </ion-header>
 
 <ion-content>
-  <ion-list *ngFor="let reserved of reservatie">
+  <ion-list>
     <ion-item >
       <ion-label>Begin</ion-label>
-        <ion-datetime value="2019-04-1" min="1990-02" max="2050" [(ngModel)]="reserved.startDate"
+        <ion-datetime value="2019-04-1" min="1990-02" max="2050" [(ngModel)]="startDate"
           [dayShortNames]="customDayShortNames"
           displayFormat="DDD. MMM DD, YY"
-          monthShortNames="jan, feb, mar, apr, mei, jun, jul, aug, sep, okt, nov, des">
+          monthShortNames="jan, feb, mar, apr, mei, jun, jul, aug, sep, okt, nov, dec">
         </ion-datetime>
     </ion-item>
       
     <ion-item>
       <ion-label>End</ion-label>
-        <ion-datetime value="2019-04-30" min="1990-02" max="2050" [(ngModel)]="reserved.endDate"
+        <ion-datetime value="2019-04-30" min="1990-02" max="2050" [(ngModel)]="endDate"
           [dayShortNames]="customDayShortNames"
           displayFormat="DDD. MMM DD, YY"
-          monthShortNames="jan, feb, mar, apr, mei, jun, jul, aug, sep, okt, nov, des">
+          monthShortNames="jan, feb, mar, apr, mei, jun, jul, aug, sep, okt, nov, dec">
         </ion-datetime>
       </ion-item>
   </ion-list>
 
-  <ion-list *ngFor="let locker of lockers">
-      <ion-item>
-        <ion-label>Locker {{locker.lockerName}}</ion-label>
-        <ion-label class="Bezet" *ngIf="locker.isReserved == true"> bezet <ion-icon ios="ios-close-circle" md="md-close-circle" slot="start"> </ion-icon> </ion-label>
-        <ion-label class="Vrij" *ngIf="locker.isReserved == false"> Vrij   <ion-icon ios="ios-checkbox-outline" md="md-checkbox-outline"></ion-icon> </ion-label>
+<!--    <div *ngFor="let locker of lockers">
+      <ion-list>
+        <ion-item>
+          <ion-label>Locker {{locker.lockerName}}</ion-label>
+          <ion-label class="Bezet" *ngIf="locker.isReserved == true" > <ion-badge color="danger" slot="end">Gereserveerd</ion-badge> </ion-label>
+          <ion-label class="Vrij" *ngIf="locker.isReserved == false"> <ion-badge color="success" slot="end">Beschikbaar</ion-badge> </ion-label>
+        </ion-item>
+    </ion-list>
 
-        <ion-checkbox *ngIf="locker.isReserved == false" slot="start" [disabled]="locker.isReserved" ></ion-checkbox>
-        <ion-checkbox *ngIf="locker.isReserved == true" slot="end" [disabled]="locker.isReserved" style="display:none"></ion-checkbox>
-      </ion-item>
-  </ion-list>
+    <p class="text" *ngIf="locker.isReserved == false">Kies de locker die je wilt reserveren <br> Max 2 Lockers </p>
+    
+    <div class="Reserveer">  
+      <ion-button (click)="Reserveren(locker)" *ngIf="locker.isReserved == true" slot="end" [disabled]="locker.isReserved" style="display:none">Is gereserveerd, kies een ander</ion-button>
+      <ion-button (click)="Reserveren(locker)" *ngIf="locker.isReserved == false" slot="start" [disabled]="locker.isReserved" >Reserveer</ion-button>
+    </div>
+  </div> -->
+ 
 
-  <p class="text">Kies de locker die je wilt reserveren <br> Max 2 Lockers </p>
-  <div class="Reserveer">  
-    <ion-button (click)="Reserveren()">Reserveer</ion-button>
-  </div>
+ <ion-card *ngFor="let locker of lockers">
+    <ion-card-header>
+      <ion-button (click)="Reserveren(locker)" *ngIf="locker.isReserved == false" [disabled]="locker.isReserved" >Reserveer</ion-button>
+      <ion-card-title>
+        Locker {{locker.lockerName}}
+      </ion-card-title>
 
+      <ion-card-subtitle>
+        <ion-label class="Bezet" *ngIf="locker.isReserved == true" > <ion-badge color="danger" slot="end">Gereserveerd</ion-badge> </ion-label>
+        <ion-label class="Vrij" *ngIf="locker.isReserved == false"> <ion-badge color="success" slot="end">Beschikbaar</ion-badge> </ion-label>
+      </ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
 </ion-content>

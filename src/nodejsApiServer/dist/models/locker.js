@@ -11,8 +11,6 @@ const mongoose = __importStar(require("mongoose"));
 const Schema = mongoose.Schema;
 const LockerSchema = new Schema({
     open: { type: Boolean, required: true },
-    lockerName: { type: String, required: true },
-    className: { type: String, required: true },
     reservation: [{ type: Schema.Types.ObjectId, ref: "Reservation" }],
     isReserved: { type: Boolean, required: true },
     gpio: { type: Number, required: true },

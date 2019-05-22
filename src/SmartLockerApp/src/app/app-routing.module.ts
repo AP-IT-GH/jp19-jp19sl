@@ -6,7 +6,8 @@ const routes: Routes = [
   { path: 'tabs/account', loadChildren: './account/account.module#AccountPageModule' },
   { path: 'notification', loadChildren: './notification/notification.module#NotificationPageModule' },
   { path: 'reserveer', loadChildren: './reserveer/reserveer.module#ReserveerPageModule' },
-  { path: '', loadChildren: './account/account.module#AccountPageModule' }
+  { path: '', loadChildren: './account/account.module#AccountPageModule' },
+  { path: 'reserveren/:id', loadChildren: './reserveren/reserveren.module#ReserverenPageModule' }
 ];
 @NgModule({
   imports: [
