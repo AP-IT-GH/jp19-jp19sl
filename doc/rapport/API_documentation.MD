@@ -33,9 +33,9 @@ updated_at:  Date
 |-------------------------------|-----------------------------|
 |GET `/students`                 |Gets all the students         |
 |POST `/students`              |Creates new student        |
-|GET `/students/student_number`| Gets specified student |
-|PUT `/students/student_number`				|Updates specified student	  |
-|GET `/students/student_number/reservations` |Gets reservations of specified student|
+|GET `/students/{student_number}`| Gets specified student |
+|PUT `/students/{student_number}`				|Updates specified student	  |
+|GET `/students/{student_number}/reservations` |Gets reservations of specified student|
  
 ## Reservations
 ###  Model
@@ -51,8 +51,8 @@ updated_at:  Date
 |-------------------------------|-----------------------------|
 |GET `/reservations`                 |Gets all the reservations         |
 |POST `/reservations`              |Creates new reservation        |
-|GET `/reservations/id`| Gets specified reservation |
-|PUT `/reservations/id`				|Updates specified reservation	  |
+|GET `/reservations/{id}`| Gets specified reservation |
+|PUT `/reservations/{id}`				|Updates specified reservation	  |
  
 
 
