@@ -1,1 +1,5 @@
-Plaats in deze map alle documenten die deel uitmaken van je eindrapport
+# Rapport
+## Software
+[Software uitleg](./SOFTWARE.MD)
+## Hardware
+[Hardware uitleg](./HARDWARE.MD)
