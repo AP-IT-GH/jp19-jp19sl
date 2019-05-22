@@ -1,0 +1,24 @@
+.Reserveer{
+    display: flex; 
+    justify-content: center;
+}
+
+.text{
+    text-align: center;
+}
+
+.Bezet{
+    text-align: right;
+    color: red;
+}
+
+.Vrij{
+    text-align: right;
+    color: green;
+    opacity: 0.65;
+}
+
+.maximal{
+    display: flex; 
+    justify-content: center;
+}

@@ -1,0 +1,7 @@
+{
+  "name": "SmartChairApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

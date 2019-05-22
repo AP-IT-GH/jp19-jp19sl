@@ -25,7 +25,6 @@ let port = 3000;
 let router = express_1.default.Router();
 mongoose.connect("mongodb://localhost:27017/smartlocker?replicaSet=rs0").catch((err) => console.log(err));
 changeStream.on("change", (change) => {
-    console.log(change);
     io.emit("changeData", change);
 });
 io.on("connection", function (client) {
@@ -39,7 +38,6 @@ app.use(bodyParser.json());
 // GET localhost:8080/api/lockers
 app.use("/api", router);
 router.route("/lockers").get((req, res) => {
-    console.log("lockers get called");
     locker_1.Locker.find().populate("reservation").then((data) => {
         res.json(data);
     });
