@@ -21,14 +21,20 @@ let app = express_1.default();
 let server = require("http").createServer(app);
 let io = require("socket.io")(server);
 let changeStream = locker_1.Locker.watch(); // { fullDocument: "updateLookup" } meegeven als parameter voor het volledige document terug te krijgen
-let port = 3000;
+let port = 8080;
 let router = express_1.default.Router();
-mongoose.connect("mongodb://localhost:27017/smartlocker?replicaSet=rs0").catch((err) => console.log(err));
+// mongoose.connect("mongodb://mongodb-1-servers-vm-0/smartlocker?replicaSet=rs0").catch((err) => console.log(err));
+mongoose
+    .connect("mongodb+srv://testuser:testuserpwd@smartlockerdb-zeh7l.gcp.mongodb.net/test?retryWrites=true", {
+    useNewUrlParser: true
+})
+    .catch((err) => console.log(err));
 changeStream.on("change", (change) => {
     io.emit("changeData", change);
 });
 io.on("connection", function (client) {
     console.log("Client " + client.id + " connected...");
+    io.emit("connected", "Client " + client.id + " connected...");
 });
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -83,36 +89,16 @@ router
         }
     });
 });
-// router
-// 	.route("/students/:id")
-// 	.get((req: Request, res: Response) => {
-// 		const id = req.params.id;
-// 		Student.findById(id).then((data) => {
-// 			res.json(data);
-// 		});
-// 	})
-// 	// PUT localhost:8080/api/Student/<id>
-// 	.put((req: Request, res: Response) => {
-// 		const updatedStudents = req.body;
-// 		const id = req.params.id;
-// 		Student.findByIdAndUpdate(id, updatedStudents, (err) => {
-// 			if (err) {
-// 				res.send(err);
-// 			} else {
-// 				res.sendStatus(200);
-// 			}
-// 		});
-// 	});
 router
     .route("/students/:studentNumber")
-    //GET localhost:8080/api/Student/<student_number>
+    //GET localhost:8080/api/Students/<student_number>
     .get((req, res) => {
     const studentNumber = req.params.studentNumber;
     student_1.Student.find({ student_number: studentNumber }).then((data) => {
         res.json(data);
     });
 })
-    //PUT localhost:8080/api/Student/<student_number>
+    //PUT localhost:8080/api/Students/<student_number>
     .put((req, res) => {
     const updatedStudent = req.body;
     const studentNumber = req.params.studentNumber;
@@ -123,6 +109,18 @@ router
         else {
             res.sendStatus(200);
         }
+    });
+});
+router.route("/students/:studentNumber/reservations").get((req, res) => {
+    const studentNumber = req.params.studentNumber;
+    student_1.Student.findOne({ student_number: studentNumber }).then((data) => {
+        reservation_1.Reservation.find({
+            student: data._id
+        })
+            .populate("locker")
+            .then((reservations) => {
+            res.json(reservations);
+        });
     });
 });
 // ---------------- Reservations -----------------------------
