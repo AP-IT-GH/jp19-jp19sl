@@ -53,6 +53,7 @@ updated_at:  Date
 |POST `/reservations`              |Creates new reservation        |
 |GET `/reservations/{id}`| Gets specified reservation |
 |PUT `/reservations/{id}`				|Updates specified reservation	  |
+|DELETE `/reservations/{id}`				|Deletes specified reservation	  |
  
 
 
