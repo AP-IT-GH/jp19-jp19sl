@@ -1,18 +1,26 @@
-# Smart System - *Smart Locker*
+---
+description: Smart Systems jaar project
+---
 
-**Teammembers**
+# Smart Locker
+
+## Team members
+
 * Jarno Cools
 * Oussama Es-Salhi
-* Imad El-Azzouzi 
+* Imad El-Azzouzi
 * Afaq Mughal
 
 ## Summary
 
-**SmartLocker** lockers die aan sensoren hangen en elektronische sloten hebben. Aangesloten op de cloud en bedienbaar van smartphone en/of webinterface.
-#### Features
-* Lockers ontgrendelen a.d.h.v. studentenkaart  
-* Applicatie om te monitoren of locker in gebruik is
-    * Reserveren van lockers op student id: uitbreiding
-* *Betalingssysteem*: uitbreiding
+> Smart Locker, lockers die aan sensoren hangen en elektronische sloten hebben. Verbonden met de cloud en bedienbaar van smartphone en/of web interface.
+>
+> #### Features
+>
+> * Lockers ontgrendelen a.d.h.v. studentenkaart
+> * Applicatie om te monitoren of de locker in gebruik is
+>   * Reserveren van lockers op student id
+> * _Betalingssysteem:_ uitbreiding
 
-[Alle features](./doc/features/features.md)
+{% page-ref page="features.md" %}
+
