@@ -1,5 +1,5 @@
 # Rapport
-https://app.gitbook.com/@smartlocker/s/smartlocker/
+smartlocker.gitbook.io
 ## Software
 [Software uitleg](./SOFTWARE.MD)
 ## Hardware
