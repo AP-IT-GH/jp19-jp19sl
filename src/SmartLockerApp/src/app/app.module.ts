@@ -12,6 +12,8 @@ import {HttpClientModule} from "@angular/common/http"
 import { HttpModule } from '@angular/http';
 
 import { DatabaseService } from './Service/database-service.service';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +23,10 @@ import { DatabaseService } from './Service/database-service.service';
     HttpClientModule,
     HttpModule,
     IonicModule.forRoot(), 
-    AppRoutingModule],
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    FormsModule
+  ],
   providers: [
     StatusBar,
     SplashScreen,

@@ -7,10 +7,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DatabaseService {
 
-  //ApiUrl :string = "https://smart-locker-234209.appspot.com/api";
+  ApiUrl :string = "https://smart-locker-234209.appspot.com/api";
   
   //lokaal
-  ApiUrl:string = "http://localhost:3000/api";
+  //ApiUrl:string = "http://localhost:3000/api";
 
   constructor(public http: HttpClient) {}
 
@@ -26,23 +26,20 @@ export class DatabaseService {
   Reserveren(reservation:IReservation){
     console.log("gereserveerd")
     this.http.post(this.ApiUrl + "/reservations", reservation).subscribe();
-  
+  }
 
-
-/*     this.http.put(this.getApiUrl + "/lockers/" + lockerID, { "isReserved": true })
-			.subscribe(success => {
-				console.log(success);
-			}, error => {
-				console.log("Error: " + error);
-			}); */
+  UpdateLockerReservatie(lockerID:string){
+    console.log("isReserved")
+    this.http.put(this.ApiUrl + "/lockers/" + lockerID, { "isReserved": true})
+      .subscribe(success => {
+        console.log(success);
+      }, error => {
+      console.log("Error: " + error);
+    });
   }
 
   GetLockers(){
     return this.http.get<ILocker>(`${this.ApiUrl}/lockers`);
-  }
-
-  GetSingleLocker(id:string){
-    return this.http.get<ILocker>(`${this.ApiUrl}/lockers/${id}`);
   }
 }
 

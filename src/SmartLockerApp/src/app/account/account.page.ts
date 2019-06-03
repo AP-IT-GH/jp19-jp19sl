@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IStudent, DatabaseService, IReservation } from '../Service/database-service.service';
 
+
 @Component({
   selector: 'app-account',
   templateUrl: './account.page.html',
@@ -11,6 +12,7 @@ export class AccountPage implements OnInit {
   students: IStudent;
   reservation: IReservation;
   FilterArray: IStudent[];
+
   constructor(public databaseservice: DatabaseService){
     console.log("opgestart")
     this.databaseservice.GetStudents().subscribe(student =>{
