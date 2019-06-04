@@ -53,9 +53,11 @@ router
     .route("/lockers/:id")
     .get((req, res) => {
     const id = req.params.id;
-    locker_1.Locker.findById(id).then((data) => {
+    locker_1.Locker.findById(id)
+        .then((data) => {
         res.json(data);
-    });
+    })
+        .catch(() => res.sendStatus(404));
 })
     // PUT localhost:8080/api/lockers/<id>
     .put((req, res) => {
@@ -82,10 +84,11 @@ router
     const student = req.body;
     student_1.Student.create(student, (err) => {
         if (err) {
-            res.send(err);
+            res.status(400);
+            res.send(err.message);
         }
         else {
-            res.sendStatus(200);
+            res.sendStatus(201);
         }
     });
 });
@@ -94,9 +97,14 @@ router
     //GET localhost:8080/api/Students/<student_number>
     .get((req, res) => {
     const studentNumber = req.params.studentNumber;
-    student_1.Student.find({ student_number: studentNumber }).then((data) => {
-        res.json(data);
-    });
+    student_1.Student.find({ student_number: studentNumber })
+        .then((data) => {
+        if (data.length > 0)
+            res.json(data);
+        else
+            res.sendStatus(404);
+    })
+        .catch(() => res.sendStatus(404));
 })
     //PUT localhost:8080/api/Students/<student_number>
     .put((req, res) => {
@@ -139,7 +147,7 @@ router
         }
         else {
             // const lockerToUpdate = Locker.findById(req.body.locker);
-            res.sendStatus(200);
+            res.sendStatus(201);
         }
     });
 });
@@ -147,11 +155,13 @@ router
     .route("/reservations/:id")
     .get((req, res) => {
     const id = req.params.id;
-    reservation_1.Reservation.findById(id).then((data) => {
+    reservation_1.Reservation.findById(id)
+        .then((data) => {
         res.json(data);
-    });
+    })
+        .catch(() => res.sendStatus(404));
 })
-    // PUT localhost:8080/api/Student/<id>
+    // PUT localhost:8080/api/Reservations/<id>
     .put((req, res) => {
     const updatedReservation = req.body;
     const id = req.params.id;
@@ -162,6 +172,15 @@ router
         else {
             res.sendStatus(200);
         }
+    });
+})
+    .delete((req, res) => {
+    const id = req.params.id;
+    reservation_1.Reservation.deleteOne({ _id: id }, (err) => {
+        if (err)
+            res.send(err);
+        else
+            res.sendStatus(200);
     });
 });
 server.listen(port);

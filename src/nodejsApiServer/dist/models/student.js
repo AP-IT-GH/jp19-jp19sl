@@ -28,7 +28,7 @@ const StudentSchema = new Schema({
     },
     group: {
         type: String,
-        required: false,
+        required: true,
         trim: true
     },
     created_at: { type: Date, default: Date.now, required: true },

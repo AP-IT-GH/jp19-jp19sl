@@ -45,9 +45,11 @@ router
 	.route("/lockers/:id")
 	.get((req: Request, res: Response) => {
 		const id = req.params.id;
-		Locker.findById(id).then((data) => {
-			res.json(data);
-		});
+		Locker.findById(id)
+			.then((data) => {
+				res.json(data);
+			})
+			.catch(() => res.sendStatus(404));
 	})
 	// PUT localhost:8080/api/lockers/<id>
 	.put((req: Request, res: Response) => {
@@ -73,9 +75,10 @@ router
 		const student = req.body;
 		Student.create(student, (err) => {
 			if (err) {
-				res.send(err);
+				res.status(400);
+				res.send(err.message);
 			} else {
-				res.sendStatus(200);
+				res.sendStatus(201);
 			}
 		});
 	});
@@ -84,9 +87,12 @@ router
 	//GET localhost:8080/api/Students/<student_number>
 	.get((req: Request, res: Response) => {
 		const studentNumber = req.params.studentNumber;
-		Student.find({ student_number: studentNumber }).then((data) => {
-			res.json(data);
-		});
+		Student.find({ student_number: studentNumber })
+			.then((data) => {
+				if (data.length > 0) res.json(data);
+				else res.sendStatus(404);
+			})
+			.catch(() => res.sendStatus(404));
 	})
 	//PUT localhost:8080/api/Students/<student_number>
 	.put((req: Request, res: Response) => {
@@ -127,7 +133,7 @@ router
 				res.send(err);
 			} else {
 				// const lockerToUpdate = Locker.findById(req.body.locker);
-				res.sendStatus(200);
+				res.sendStatus(201);
 			}
 		});
 	});
@@ -135,9 +141,11 @@ router
 	.route("/reservations/:id")
 	.get((req: Request, res: Response) => {
 		const id = req.params.id;
-		Reservation.findById(id).then((data) => {
-			res.json(data);
-		});
+		Reservation.findById(id)
+			.then((data) => {
+				res.json(data);
+			})
+			.catch(() => res.sendStatus(404));
 	})
 	// PUT localhost:8080/api/Reservations/<id>
 	.put((req: Request, res: Response) => {
