@@ -1,5 +1,5 @@
 # PCB
 
-In deze map verzamel je op een gestructueerde manier de bron bestanden voor het
-PCB ontwerp. 
+![Solenoid](../../doc/img/pcb/solenoid.png)
 
+![Voeding](../../doc/img/pcb/voeding.png)
